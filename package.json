@@ -1,0 +1,23 @@
+{
+  "name": "bitera-faucet",
+  "version": "1.0.0",
+  "description": "Bitera Faucet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattiascaricato/bitera-faucet.git"
+  },
+  "keywords": [
+    "bitera",
+    "faucet"
+  ],
+  "author": "Mati",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mattiascaricato/bitera-faucet/issues"
+  },
+  "homepage": "https://github.com/mattiascaricato/bitera-faucet#readme"
+}
