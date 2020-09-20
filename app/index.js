@@ -41,19 +41,17 @@ window.addEventListener('load', () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const account = accounts[0];
 
-    // web3.eth.defaultAccount = account;
-
-    contract.methods.mint(address, amount).send({ from: account });
+    contract.methods.mint(address, amount).send({ from: account }).then((a) => console.log('TX completed'));
   }
 
   document.querySelector('.btn-call-to-action').addEventListener('click', () => {
-    const address = document.querySelector('.full-width-input').value;
+    const address = document.querySelector('.flexible-input').value;
     if (!address) {
       console.error('Address not valid');
       return;
     }
 
     // Use web3 utils 
-    mint(address, '999999999999999999999');
+    mint(address, web3.utils.toWei('1337', 'ether'));
   });
  });

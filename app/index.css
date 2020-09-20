@@ -34,7 +34,7 @@ body {
   line-height: 2rem;
 }
 
-.full-width-input {
+.flexible-input {
   width: 100%;
   max-width: 600px;
   padding: 1rem 0;
@@ -47,7 +47,7 @@ body {
   border: 1px solid black;
 }
 
-.full-width-input:focus {
+.flexible-input:focus {
   outline: none;
   box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
 }
@@ -81,6 +81,12 @@ body {
   filter: invert(100%);
   vertical-align: text-bottom;
   margin-right: 16px;
+}
+
+.secondary-text {
+  color: #e8e6e3;
+  font-weight: lighter;
+  font-size: 0.8rem;
 }
 
 .footer a {
