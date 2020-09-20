@@ -27,11 +27,11 @@ const connect = async () => {
   }
 }
 
-const mint = async (address, amount, contract) => {
+const mint = async (addressTo, amount, contract) => {
   const accounts = await web3.eth.getAccounts();
-  const account = accounts[0];
+  const addressFrom = accounts[0];
 
-  contract.methods.mint(address, amount).send({ from: account }).then((a) => console.log('TX completed'));
+  contract.methods.mint(addressTo, amount).send({ from: addressFrom }).then((a) => console.log('TX completed'));
 }
 
 window.addEventListener('load', () => {
