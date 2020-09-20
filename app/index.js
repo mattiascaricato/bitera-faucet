@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const account = accounts[0];
 
-    web3.eth.defaultAccount = account;
+    // web3.eth.defaultAccount = account;
 
     contract.methods.mint(address, amount).send({ from: account });
   }
@@ -53,6 +53,7 @@ window.addEventListener('load', () => {
       return;
     }
 
+    // Use web3 utils 
     mint(address, '999999999999999999999');
   });
  });
