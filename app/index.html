@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bitera Faucet</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="/index.css">
     <script src="/web3.min.js"></script>
     <script src="/index.js"></script>
   </head>
     <body>
       <div class="container">
-        <h1>Bitera Faucet</h1>
-        <label for="name" class="col-lg-2 control-label">Enter your testnet wallet address</label>
-        <input id="name" type="text">
-        <button id="button">Send me test DAI</button>
+        <a href="https://bitera.app/" target="_blank" class="navbar-item">
+          <img id="logo" src="assets/bitera-logo.svg" alt="bitera-logo">
+        </a>
+        <div class="content">
+          <h1 class="title">Bitera Faucet</h1>
+          <input id="name" type="text" placeholder="Enter your testnet wallet address">
+          <button id="button">Send me test DAI</button>
+        </div>
       </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script>

@@ -1,33 +1,70 @@
 body {
-  background-color:#F0F0F0;
+  background-image: linear-gradient(90deg, rgb(77, 39, 150) 0%, rgb(154, 33, 148) 100%), none;
+  background-color: initial;
+  color: rgb(232, 230, 227);
   padding: 2em;
-  font-family: 'Raleway','Source Sans Pro', 'Arial';
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
 .container {
   width: 50%;
   margin: 0 auto;
+  text-align: center;
+}
+
+.content {
+  margin: 20vh 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
 }
 
 label {
-  display:block;
-  margin-bottom:10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 input {
-  padding:10px;
-  width: 50%;
-  margin-bottom: 1em;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 4rem 0;
+  border: 0;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.7s;
+  text-align: center;
+  line-height: 0;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px !important;
 }
 
 button {
-  margin: 2em 0;
-  padding: 1em 4em;
-  display:block;
+  padding: 1rem 2rem;
+  border: 0;
+  background-color: rgb(24, 26, 27);
+  color: rgb(198, 193, 185);
+  font-size: 1.5rem;
+  border-radius: 50px;
+  transition: all 0.7s;
+  border-radius: 290486px;
+  font-weight: 500;
 }
 
-#instructor {
-  padding:1em;
-  background-color:#fff;
-  margin: 1em 0;
+button:hover {
+  background-color: rgb(0, 186, 95);
+  box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+#logo {
+  height: 60px;
 }
