@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buenbit">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bitera Faucet</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="/index.css">
-    <script src="/web3.min.js" async></script>
-    <script src="/index.js" async></script>
   </head>
     <body>
       <div class="container">
-        <a href="https://bitera.app/" target="_blank" class="navbar-item">
+        <a href="https://bitera.app/" target="_blank" class="navbar-item" rel="noreferrer">
           <img class="logo" src="assets/bitera-logo.svg" alt="bitera-logo">
         </a>
         <div class="content">
           <h1 class="title">Bitera Faucet</h1>
           <form>
-            <input class="flexible-input" type="text" placeholder="Ingresa la dirección de tu testnet wallet de Bitera">
+            <label for="wallet-input" class="hidden-label">wallet</label>
+            <input id="wallet-input" class="flexible-input" type="text" placeholder="Ingresa la dirección de tu testnet wallet de Bitera">
             <button type="submit" class="btn-call-to-action"><span class="send-icon"></span>Enviar DAI</button>
           </form>
           <p class="secondary-text">* DAI de la red de Ethereum Ropsten, <strong>NO es DAI real</strong></p>
@@ -27,5 +27,7 @@
           <p>2020 © Bitera - Todos los derechos reservados - <a href="https://bitera.app/privacy-policy.html">Política de Privacidad</a></p>
         </div>
       </div>
+    <script src="/web3.min.js" defer></script>
+    <script src="/index.js" defer></script>
   </body>
 </html>
