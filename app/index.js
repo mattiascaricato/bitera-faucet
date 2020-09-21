@@ -49,8 +49,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
   const address = document.querySelector('.flexible-input').value;
   const amountOfDAI = web3.utils.toWei('1337', 'ether');
 
-  if (!address) {
-    console.error('Address not valid');
+  if (!web3.utils.isAddress(address)) {
+    window.alert('Dirección de Wallet invalida');
     return;
   }
 
