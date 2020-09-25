@@ -11,9 +11,15 @@ async function main() {
   // to make sure everything is compiled
   // await bre.run('compile');
 
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", await deployer.getAddress());
+  console.log("Account balance:", (await deployer.getBalance()).toString());
+
   // We get the contract to deploy
   const DaiContractFactory = await ethers.getContractFactory("Dai");
-  const DaiContract = await DaiContractFactory.deploy("DAI contract deployed!");
+  const chainId = await bre.web3.eth.getChainId();
+  const DaiContract = await DaiContractFactory.deploy(chainId);
 
   await DaiContract.deployed();
 

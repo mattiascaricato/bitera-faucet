@@ -12,7 +12,8 @@
 
 - Web server ```npm start```
 - EVM ```npx buidler node```
-- Deploying SC to localhost EVM (local Ethereum network) node ```npx buidler run scripts/sample-script.js --network localhost```
+- Deploying SC to localhost EVM (local Ethereum network) node ```npx buidler run scripts/dai-deploy.js --network localhost```
+- Deploying SC to ropsten ```npx buidler run scripts/dai-deploy.js --network ropsten```
 - Compile SC ```npx buidler compile```
 - Test SC ```npx buidler test```
 - Buidler built-in JavaScript console ```$ npx buidler console```

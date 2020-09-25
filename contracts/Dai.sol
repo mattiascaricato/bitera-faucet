@@ -115,5 +115,4 @@ contract Dai {
         emit Transfer(address(0), dst, wad);
         totalSupply = add(totalSupply, wad);
     }
-
 }

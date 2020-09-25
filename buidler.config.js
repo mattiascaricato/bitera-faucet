@@ -1,6 +1,9 @@
 usePlugin("@nomiclabs/buidler-waffle");
 usePlugin("@nomiclabs/buidler-web3");
 
+const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+const ROPSTEN_PRIVATE_KEY = process.env.ROPSTEN_PRIVATE_KEY;
+
 // This is a sample Buidler task. To learn how to create your own go to
 // https://buidler.dev/guides/create-task.html
 task("accounts", "Prints the list of accounts")
@@ -36,4 +39,10 @@ module.exports = {
   solc: {
     version: "0.6.8",
   },
+  networks: {
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${ROPSTEN_PRIVATE_KEY}`]
+    }
+  }
 };
