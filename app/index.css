@@ -80,7 +80,6 @@ body {
   font-size: 1.3rem;
   border-radius: 50px;
   transition: all 0.7s;
-  border-radius: 50px;
   color: #FFFFFF;
 }
 
@@ -105,17 +104,17 @@ body {
 }
 
 .secondary-text {
-  color: #e8e6e3;
+  color: #E8E6E3;
   font-weight: lighter;
   font-size: 0.8rem;
 }
 
 .footer a {
-  color: #5ac4e9;
+  color: #5AC4E9;
   text-decoration: none;
   padding: 0;
 }
 
 .footer a:hover {
-  color: #c6c1b9;
+  color: #C6C1B9;
 }
