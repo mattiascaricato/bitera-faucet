@@ -1,16 +1,19 @@
+body, input, button {
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
   background-image: linear-gradient(90deg, rgb(77, 39, 150) 0%, rgb(154, 33, 148) 100%), none;
   background-color: initial;
   color: #FFFFFF;
   padding: 0 40px;
-  font-family: "Poppins", sans-serif;
   margin: 0;
   height: 100%;
 }
 
 .logo {
   height: 90px;
-  width: 100%;
+  width: 300px;
   margin-top: 160px;
   display: block;
   background: url(assets/bitera-logo.svg) no-repeat center;
@@ -24,6 +27,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
+}
+
+.secondary-button {
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  padding: 14px;
+  border-radius: 50px;
+  font-size: 1rem;
+  align-self: flex-end;
+}
+
+.secondary-button:focus {
+  outline: 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #00d395;
+  border-radius: 50px;
+  margin-left: 8px;
 }
 
 .content {
@@ -38,6 +64,7 @@ body {
   font-size: 3rem;
   margin: 0;
   line-height: 3rem;
+  font-weight: 500;
 }
 
 .flexible-input {
@@ -105,8 +132,16 @@ body {
 
 .secondary-text {
   color: #E8E6E3;
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 0.8rem;
+}
+
+.secondary-text strong {
+  font-weight: 400;
+}
+
+.footer {
+  font-weight: 300;
 }
 
 .footer a {
