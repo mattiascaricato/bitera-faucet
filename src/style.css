@@ -5,6 +5,29 @@ html, body {
 	color: white;
 }
 
+body {
+	background-image: linear-gradient(90deg, rgb(77, 39, 150) 0%, rgb(154, 33, 148) 100%), none;
+  background-color: initial;
+  color: #FFFFFF;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+}
+
 h1 {
 	text-align: center;
 }

@@ -30,7 +30,7 @@ const Logo = () => (
 );
 
 const Copyright = () => (
-  <div class="footer">
+  <div>
     <p>2020 © Bitera - Todos los derechos reservados - <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a></p>
   </div>
 );
@@ -48,11 +48,13 @@ const AccountHeader = (props) => {
 };
 
 export default () => (
-  <div>
-    <AccountHeader account={ACCOUNT}/>
-    <Logo />
-    <FaucetForm />
-    <Copyright />
+  <div class="container">
+    <div class="content">
+      <AccountHeader account={ACCOUNT}/>
+      <Logo />
+      <FaucetForm />
+      <Copyright />
+    </div>
   </div>
 );
 
