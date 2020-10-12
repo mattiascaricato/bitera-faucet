@@ -9,11 +9,11 @@ const AddressInput = () => (
 );
 
 const SubmitButton = () => (
-  <button type="submit">Enviar DAI</button>
+  <button type="submit"><span class="send-icon"></span>Enviar DAI</button>
 );
 
 const Disclaimer = () => (
-  <p>* DAI de la red de Ethereum Ropsten, <strong>NO es DAI real</strong></p>
+  <p class="disclaimer">* DAI de la red de Ethereum Ropsten, <strong>NO es DAI real</strong></p>
 );
 
 const FaucetForm = () => (
@@ -26,13 +26,11 @@ const FaucetForm = () => (
 );
 
 const Logo = () => (
-  <p>Bitera</p>
+  <a href="https://bitera.app/" target="_blank" class="logo" rel="noreferrer">Bitera logo</a>
 );
 
 const Copyright = () => (
-  <div>
-    <p>2020 © Bitera - Todos los derechos reservados - <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a></p>
-  </div>
+  <p>2020 © Bitera - Todos los derechos reservados - <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a></p>
 );
 
 const AccountHeader = (props) => {
@@ -49,12 +47,18 @@ const AccountHeader = (props) => {
 
 export default () => (
   <div class="container">
-    <div class="content">
+    <header class="header">
       <AccountHeader account={ACCOUNT}/>
+    </header>
+    <div class="logo">
       <Logo />
-      <FaucetForm />
-      <Copyright />
     </div>
+    <section class="content">
+      <FaucetForm />
+    </section>
+    <footer class="footer">
+      <Copyright />
+    </footer>
   </div>
 );
 
