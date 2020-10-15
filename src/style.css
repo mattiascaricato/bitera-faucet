@@ -115,6 +115,10 @@ html, body {
   color: #FFFFFF;
 }
 
+.secondary-cta:focus {
+  outline: none;
+}
+
 .send-icon {
   display: inline-block;
   width: 24px;
