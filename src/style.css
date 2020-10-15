@@ -64,7 +64,7 @@ html, body {
   max-width: 400px;
   padding: 1rem 0;
   margin: 3rem 0;
-  border-radius: 50px;
+  border-radius: 30px;
   font-size: 0.9rem;
   transition: all 0.7s;
   text-align: center;
@@ -81,23 +81,38 @@ html, body {
   box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
 }
 
-.content > form > button {
+.primary-cta {
   padding: 1rem 2rem;
   border: 0;
   background-color: rgb(0, 186, 95);
   font-size: 1.3rem;
-  border-radius: 50px;
+  border-radius: 30px;
   transition: all 0.7s;
   color: #FFFFFF;
 }
 
-.content > form > button:hover {
+.primary-cta:hover {
   background-color: #141826;
   box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
 }
 
 .content > form > button:focus {
   outline: none;
+}
+
+.secondary-cta {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: all 0.7s;
+  color: #363636;
+  border: 1px solid black;
+}
+
+.secondary-cta:hover {
+  background-color: rgb(77, 39, 150);
+  color: #FFFFFF;
 }
 
 .send-icon {

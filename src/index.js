@@ -10,7 +10,7 @@ const AddressInput = ({ value, onChange }) => (
 );
 
 const SubmitButton = () => (
-  <button type="submit"><span class="send-icon"></span>Enviar DAI</button>
+  <button class="primary-cta" type="submit"><span class="send-icon"></span>Enviar DAI</button>
 );
 
 const Disclaimer = () => (
@@ -41,8 +41,8 @@ const AccountHeader = (props) => {
 
   return (
     address
-      ? <button onClick={onClick}>{getShortAddress(address)}</button>
-      : <button onClick={onClick}>Conectá tu Wallet <span></span></button>
+      ? <button class="secondary-cta" onClick={onClick}>{getShortAddress(address)}</button>
+      : <button class="secondary-cta" onClick={onClick}>Conectá tu Wallet <span></span></button>
   );
 };
 
