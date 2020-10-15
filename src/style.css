@@ -96,6 +96,10 @@ html, body {
   box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
 }
 
+.content > form > button:focus {
+  outline: none;
+}
+
 .send-icon {
   display: inline-block;
   width: 24px;
