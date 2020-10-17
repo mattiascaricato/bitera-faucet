@@ -1,6 +1,8 @@
 import React from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
 import { forwardRef } from 'preact/compat';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
 const Title = () => (
@@ -92,9 +94,18 @@ export default () => {
     setToAddress(e.target.value);
   };
 
+  const notify = () => toast('DAI enviado!', {
+    position: 'bottom-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(`Form submited - Address: ${toAddress}`);
+    notify();
   };
 
   return (
@@ -115,6 +126,7 @@ export default () => {
       </section>
       <footer className="footer">
         <Copyright />
+        <ToastContainer />
       </footer>
     </div>
   );

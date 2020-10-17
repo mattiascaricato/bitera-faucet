@@ -154,3 +154,6 @@ html, body {
   color: #C6C1B9;
 }
 
+.Toastify__toast {
+  border-radius: 8px;
+}
