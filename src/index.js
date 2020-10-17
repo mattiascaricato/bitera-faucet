@@ -1,5 +1,6 @@
+import React from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
-import { forwardRef } from "preact/compat";
+import { forwardRef } from 'preact/compat';
 import './style.css';
 
 const Title = () => (
@@ -13,18 +14,26 @@ const AddressInput = forwardRef(({ value, onChange }, ref) => (
     onChange={onChange}
     placeholder="Ingresa la dirección de tu testnet wallet de Bitera"
     ref={ref}
-  ></input>
+  />
 ));
 
 const SubmitButton = () => (
-  <button class="primary-cta" type="submit"><span class="send-icon"></span>Enviar DAI</button>
+  <button className="primary-cta" type="submit">
+    <span className="send-icon" />
+    Enviar DAI
+  </button>
 );
 
 const Disclaimer = () => (
-  <p class="disclaimer">* DAI de la red de Ethereum Ropsten, <strong>NO es DAI real</strong></p>
+  <p className="disclaimer">
+    * DAI de la red de Ethereum Ropsten,
+    <strong>NO es DAI real</strong>
+  </p>
 );
 
-const FaucetForm = ({ value, onChange, onSubmit, inputRef }) => (
+const FaucetForm = ({
+  value, onChange, onSubmit, inputRef,
+}) => (
   <form onSubmit={onSubmit}>
     <Title />
     <AddressInput value={value} onChange={onChange} ref={inputRef} />
@@ -34,11 +43,15 @@ const FaucetForm = ({ value, onChange, onSubmit, inputRef }) => (
 );
 
 const Logo = () => (
-  <a href="https://bitera.app/" target="_blank" class="logo" rel="noreferrer">Bitera logo</a>
+  <a href="https://bitera.app/" target="_blank" className="logo" rel="noreferrer">Bitera logo</a>
 );
 
 const Copyright = () => (
-  <p>2020 © Bitera - Todos los derechos reservados - <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a></p>
+  <p>
+    2020 © Bitera - Todos los derechos reservados -
+    {' '}
+    <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a>
+  </p>
 );
 
 const AccountHeader = (props) => {
@@ -48,8 +61,13 @@ const AccountHeader = (props) => {
 
   return (
     address
-      ? <button class="secondary-cta" onClick={onClick}>{getShortAddress(address)}</button>
-      : <button class="secondary-cta" onClick={onClick}>Conectá tu Wallet <span></span></button>
+      ? <button className="secondary-cta" type="button" onClick={onClick}>{getShortAddress(address)}</button>
+      : (
+        <button className="secondary-cta" type="button" onClick={onClick}>
+          Conectá tu Wallet
+          <span />
+        </button>
+      )
   );
 };
 
@@ -63,39 +81,41 @@ export default () => {
   }, []);
 
   const handleAccountOnClick = () => {
-    account.address
-      ? setAccount(prevState => ({ ...prevState, address: '' }))
-      : setAccount(prevState => ({ ...prevState, address: '0x8b2db6397De65D4C03429BC2e7f09515f98AC214' }));
-  }
+    if (account.address) {
+      setAccount((prevState) => ({ ...prevState, address: '' }));
+    } else {
+      setAccount((prevState) => ({ ...prevState, address: '0x8b2db6397De65D4C03429BC2e7f09515f98AC214' }));
+    }
+  };
 
   const handleAdressChange = (e) => {
     setToAddress(e.target.value);
-  }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(`Form submited - Address: ${toAddress}`);
-  }
+  };
 
   return (
-  <div class="container">
-    <header class="header">
-      <AccountHeader onClick={handleAccountOnClick} account={account} />
-    </header>
-    <div class="logo">
-      <Logo />
+    <div className="container">
+      <header className="header">
+        <AccountHeader onClick={handleAccountOnClick} account={account} />
+      </header>
+      <div className="logo">
+        <Logo />
+      </div>
+      <section className="content">
+        <FaucetForm
+          value={toAddress}
+          onChange={handleAdressChange}
+          onSubmit={handleFormSubmit}
+          inputRef={inputRef}
+        />
+      </section>
+      <footer className="footer">
+        <Copyright />
+      </footer>
     </div>
-    <section class="content">
-      <FaucetForm
-        value={toAddress}
-        onChange={handleAdressChange}
-        onSubmit={handleFormSubmit}
-        inputRef={inputRef}
-      />
-    </section>
-    <footer class="footer">
-      <Copyright />
-    </footer>
-  </div>
-  )
-}
+  );
+};
