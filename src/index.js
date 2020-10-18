@@ -16,7 +16,7 @@ const AddressInput = forwardRef(({ value, onChange }, ref) => (
     type="text"
     value={value}
     onChange={onChange}
-    placeholder="Ingresa la dirección de tu testnet wallet de Bitera"
+    placeholder="Ingresa la dirección de tu Bitera"
     ref={ref}
   />
 ));
