@@ -5,7 +5,7 @@ Send DAIs from the Ropsten Ethereum Network to your wallet
 ## Demo
 Live version can be found [here](https://bitera-faucet.vercel.app/)
 
-![alt text](https://github.com/mattiascaricato/bitera-faucet/blob/master/app/assets/app.PNG?raw=true "Bitera Faucet Preview")
+![alt text](https://github.com/mattiascaricato/bitera-faucet/blob/master/src/assets/app.PNG?raw=true "Bitera Faucet Preview")
 
 ## Development
 ### Web App
