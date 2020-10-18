@@ -2,7 +2,6 @@
   "name": "bitera-faucet",
   "version": "1.0.0",
   "description": "Bitera Faucet",
-  "main": "app/index.js",
   "scripts": {
     "build": "preact build --no-prerender",
     "dev": "preact watch",
