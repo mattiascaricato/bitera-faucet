@@ -83,7 +83,9 @@ export default () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    // Set focus on the input
     inputRef.current.focus();
+    // Configure react-toastify
     toast.configure({
       position: 'bottom-right',
       autoClose: 5000,
@@ -127,6 +129,7 @@ export default () => {
         return;
       }
 
+      // eslint-disable-next-line no-console
       console.error(error);
     }
 
