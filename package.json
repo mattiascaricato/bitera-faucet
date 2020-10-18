@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Bitera Faucet",
   "scripts": {
-    "build": "preact build --no-prerender",
+    "build": "preact build --no-prerender --no-sw",
     "dev": "preact watch",
-    "start": "nodemon server/index.js -e js,css,html",
     "node": "buidler node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
