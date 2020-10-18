@@ -170,7 +170,7 @@ export default () => {
 
     const parseDai = (amount) => ethers.utils.parseUnits(amount, 18);
 
-    const tx = await daiWithSigner.mint('0x03bd02bc9899c111458f809f2e00fd9c33112057', parseDai('1337'));
+    const tx = await daiWithSigner.mint(toAddress, parseDai('1337'));
     notify(() => (
       <a href={`https://ropsten.etherscan.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer">
         Tus DAI están en camino...
