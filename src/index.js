@@ -31,6 +31,7 @@ const SubmitButton = () => (
 const Disclaimer = () => (
   <p className="disclaimer">
     * DAI de la red de Ethereum Ropsten,
+    {' '}
     <strong>NO es DAI real</strong>
   </p>
 );
