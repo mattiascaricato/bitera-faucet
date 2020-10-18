@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'preact/hooks';
 import { forwardRef } from 'preact/compat';
 import { toast } from 'react-toastify';
 import { ethers } from 'ethers';
+import createPersistedState from 'use-persisted-state';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
@@ -13,6 +14,7 @@ const Title = () => (
 
 const AddressInput = forwardRef(({ value, onChange }, ref) => (
   <input
+    className="flexible-input"
     type="text"
     value={value}
     onChange={onChange}
@@ -76,10 +78,11 @@ const AccountHeader = ({ account: { address }, onClick }) => {
 
 const notify = (message) => toast(message);
 const notifyError = (message) => toast.error(message);
+const useAccountState = createPersistedState('account');
 
 export default () => {
   const [provider, setProvider] = useState(null);
-  const [account, setAccount] = useState({ address: '' });
+  const [account, setAccount] = useAccountState({ address: '' });
   const [toAddress, setToAddress] = useState('');
   const inputRef = useRef(null);
 

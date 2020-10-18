@@ -4,12 +4,13 @@
   "description": "Bitera Faucet",
   "main": "app/index.js",
   "scripts": {
-    "build": "preact build",
+    "build": "preact build --no-prerender",
     "dev": "preact watch",
     "start": "nodemon server/index.js -e js,css,html",
     "node": "buidler node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src",
+    "serve": "sirv build --port 8080 --cors --single"
   },
   "repository": {
     "type": "git",
@@ -37,12 +38,15 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "ethereum-waffle": "^3.1.0"
+    "ethereum-waffle": "^3.1.0",
+    "preact-cli": "^3.0.3",
+    "sirv-cli": "^1.0.7"
   },
   "dependencies": {
     "ethers": "^5.0.17",
     "path": "^0.12.7",
     "preact": "^10.5.4",
-    "react-toastify": "^6.0.9"
+    "react-toastify": "^6.0.9",
+    "use-persisted-state": "^0.3.0"
   }
 }

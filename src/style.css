@@ -59,7 +59,7 @@ html, body {
   justify-content: space-around;
 }
 
-.content > form > input {
+.flexible-input {
   width: 100%;
   max-width: 400px;
   padding: 1rem 0;
@@ -72,11 +72,11 @@ html, body {
   border: 1px solid black;
 }
 
-.content > form > input:placeholder-shown {
+.flexible-input:placeholder-shown {
   text-overflow: ellipsis;
 }
 
-.content > form > input:focus {
+.flexible-input:focus {
   outline: none;
   box-shadow: rgba(77, 39, 150, 0.42) 0px 14px 26px -12px, rgba(0, 0, 0, 0.12) 0px 4px 23px 0px, rgba(77, 39, 150, 0.2) 0px 8px 10px -5px;
 }
