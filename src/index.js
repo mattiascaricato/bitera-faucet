@@ -98,7 +98,7 @@ export default () => {
     // Disconnect account
     if (account.address) {
       setAccount({ address: '' });
-      setProvider({});
+      setProvider(null);
       return;
     }
     // Connect account
