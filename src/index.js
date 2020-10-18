@@ -1,7 +1,9 @@
 import React from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
 import { forwardRef } from 'preact/compat';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { ethers } from 'ethers';
+
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
@@ -45,21 +47,19 @@ const FaucetForm = ({
 );
 
 const Logo = () => (
-  <a href="https://bitera.app/" target="_blank" className="logo" rel="noreferrer">Bitera logo</a>
+  <a href="https://bitera.app/" target="_blank" className="logo" rel="noopener noreferrer">Bitera logo</a>
 );
 
 const Copyright = () => (
   <p>
     2020 © Bitera - Todos los derechos reservados -
     {' '}
-    <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noreferrer">Política de Privacidad</a>
+    <a href="https://bitera.app/privacy-policy.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>
   </p>
 );
 
-const AccountHeader = (props) => {
-  const { account: { address }, onClick } = props;
-
-  const getShortAddress = (address) => `${address.substring(0, 6)}...${address.substring(address.length - 4, address.length)}`;
+const AccountHeader = ({ account: { address }, onClick }) => {
+  const getShortAddress = (addr) => `${addr.substring(0, 6)}...${addr.substring(addr.length - 4, addr.length)}`;
 
   return (
     address
@@ -73,39 +73,107 @@ const AccountHeader = (props) => {
   );
 };
 
+const notify = (message) => toast(message);
+const notifyError = (message) => toast.error(message);
+
 export default () => {
+  const [provider, setProvider] = useState(null);
   const [account, setAccount] = useState({ address: '' });
   const [toAddress, setToAddress] = useState('');
   const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current.focus();
+    toast.configure({
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   }, []);
 
-  const handleAccountOnClick = () => {
+  const handleAccountOnClick = async () => {
+    // Disconnect account
     if (account.address) {
-      setAccount((prevState) => ({ ...prevState, address: '' }));
-    } else {
-      setAccount((prevState) => ({ ...prevState, address: '0x8b2db6397De65D4C03429BC2e7f09515f98AC214' }));
+      setAccount({ address: '' });
+      setProvider({});
+      return;
     }
+    // Connect account
+    try {
+      // Request account access
+      const { chainId } = window.ethereum;
+      const ROPSTEN_CHAIN_ID = '0x3';
+
+      if (chainId !== ROPSTEN_CHAIN_ID) {
+        const error = new Error();
+        error.code = 'WRONG_CHAIN';
+
+        throw error;
+      }
+
+      const [address] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      setAccount({ address });
+    } catch (error) {
+      if (error.code === 'WRONG_CHAIN') {
+        notifyError('Por favor conectá tu MetaMask a la red Ropsten para continuar');
+        return;
+      }
+
+      if (error.code === 4001) {
+        notifyError('Por favor conectá MetaMask para continuar');
+        return;
+      }
+
+      console.error(error);
+    }
+
+    setProvider(new ethers.providers.Web3Provider(window.ethereum));
   };
 
   const handleAdressChange = (e) => {
     setToAddress(e.target.value);
   };
 
-  const notify = () => toast('DAI enviado!', {
-    position: 'bottom-right',
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    notify();
+
+    if (!ethers.utils.isAddress(toAddress)) {
+      notifyError('Por favor ingresá una dirección valida');
+      return;
+    }
+
+    if (!provider) {
+      notifyError('Por favor conectá MetaMask para continuar');
+      return;
+    }
+
+    const signer = provider.getSigner();
+    const daiAddress = '0xFCE4e7ca35CF1Bd56648FC0DBe9285d21C2fA859';
+    const daiABI = [
+      // Some details about the token
+      'function name() view returns (string)',
+      'function symbol() view returns (string)',
+      // Get the account balance
+      'function balanceOf(address) view returns (uint)',
+      // Mint DAIs
+      'function mint(address, uint)',
+    ];
+    const daiContract = new ethers.Contract(daiAddress, daiABI, provider);
+    const daiWithSigner = daiContract.connect(signer);
+
+    const parseDai = (amount) => ethers.utils.parseUnits(amount, 18);
+
+    const tx = await daiWithSigner.mint('0x03bd02bc9899c111458f809f2e00fd9c33112057', parseDai('1337'));
+    notify(() => (
+      <a href={`https://ropsten.etherscan.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer">
+        Tus DAI están en camino...
+      </a>
+    ));
+    await tx.wait();
+    notify('DAI enviados con éxito!');
   };
 
   return (
@@ -126,7 +194,6 @@ export default () => {
       </section>
       <footer className="footer">
         <Copyright />
-        <ToastContainer />
       </footer>
     </div>
   );

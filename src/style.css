@@ -157,3 +157,7 @@ html, body {
 .Toastify__toast {
   border-radius: 8px;
 }
+
+.not-allowed {
+  cursor: not-allowed;
+}
