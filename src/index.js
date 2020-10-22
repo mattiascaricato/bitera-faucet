@@ -11,13 +11,13 @@ import './style.css';
 const App = () => (
   <NotificationContextPorivder>
     <AccountContextProvider>
-      <FaucetContextProvider>
-        <div className="container">
-          <Header />
+      <div className="container">
+        <Header />
+        <FaucetContextProvider>
           <Content />
-          <Footer />
-        </div>
-      </FaucetContextProvider>
+        </FaucetContextProvider>
+        <Footer />
+      </div>
     </AccountContextProvider>
   </NotificationContextPorivder>
 );

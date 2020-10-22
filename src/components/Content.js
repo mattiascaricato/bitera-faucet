@@ -29,7 +29,7 @@ const Content = () => {
     e.preventDefault();
 
     if (!ethers.utils.isAddress(recipientAddress)) {
-      notifyError('Por favor ingresá una dirección valida');
+      notifyError('Por favor, ingresá una dirección valida');
       return;
     }
 
@@ -45,7 +45,7 @@ const Content = () => {
       notify('DAI enviados con éxito!');
     } catch (error) {
       if (error.message === 'CONNECT_REJECTED') {
-        notifyError('Por favor conectá MetaMask para continuar');
+        notifyError('Por favor, conectá MetaMask');
       }
     }
   };

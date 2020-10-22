@@ -22,11 +22,29 @@ const FaucetContextProvider = ({ children }) => {
   const { provider } = useContext(ProviderContext);
   const [daiContract, setDaiContract] = useState(null);
 
+  // MetaMask recommends reloading the page when the currently connected account or network changes
   useEffect(() => {
-    console.log(provider);
-    console.log(daiContract);
-    if (!provider) return;
-    console.log('new provider');
+    const { ethereum, location } = window;
+
+    ethereum.on('chainChanged', () => {
+      location.reload();
+    });
+
+    ethereum.on('accountsChanged', () => {
+      location.reload();
+    });
+
+    // Cleanup events listeners when component unmount
+    return () => {
+      ethereum.removeAllListeners();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!provider) {
+      setDaiContract(null);
+      return;
+    }
 
     const contract = new ethers.Contract(daiAddress, daiABI, provider);
     const signer = provider.getSigner();

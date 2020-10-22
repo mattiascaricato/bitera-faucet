@@ -35,9 +35,9 @@ const Header = () => {
       removeError();
     } catch (error) {
       if (error.message === 'WRONG_NETWORK') {
-        notifyError('Por favor conectá tu MetaMask a la red Ropsten para continuar');
+        notifyError('Por favor, conectá tu MetaMask a la red Ropsten');
       } else if (error.message === 'CONNECT_REJECTED') {
-        notifyError('Por favor conectá MetaMask para continuar');
+        notifyError('Por favor, conectá MetaMask');
       }
     }
   };
