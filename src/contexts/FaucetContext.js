@@ -35,7 +35,11 @@ const FaucetContextProvider = ({ children }) => {
     setDaiContract(contractWithSigner);
   }, [provider]);
 
-  const sendDAI = (recipientAddress) => daiContract.mint(recipientAddress, parseDai('1337'));
+  const sendDAI = (recipientAddress) => {
+    if (!provider || !daiContract) throw new Error('CONNECT_REJECTED');
+
+    return daiContract.mint(recipientAddress, parseDai('1337'));
+  };
 
   const faucetContextValue = {
     sendDAI,

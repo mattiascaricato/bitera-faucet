@@ -12,7 +12,7 @@ const Logo = () => (
 
 const Content = () => {
   const { sendDAI } = useFaucet();
-  const [recipientAddress, setRecipientAddress] = useState('');
+  const [recipientAddress, setRecipientAddress] = useState(null);
   const { notify, notifyError } = useNotification();
   const inputRef = useRef(null);
 
@@ -33,15 +33,21 @@ const Content = () => {
       return;
     }
 
-    const tx = await sendDAI(recipientAddress);
-    notify(() => (
-      <a href={`https://ropsten.etherscan.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer">
-        Tus DAI están en camino...
-      </a>
-    ));
+    try {
+      const tx = await sendDAI(recipientAddress);
+      notify(() => (
+        <a href={`https://ropsten.etherscan.io/tx/${tx.hash}`} target="_blank" rel="noopener noreferrer">
+          Tus DAI están en camino...
+        </a>
+      ));
 
-    await tx.wait();
-    notify('DAI enviados con éxito!');
+      await tx.wait();
+      notify('DAI enviados con éxito!');
+    } catch (error) {
+      if (error.message === 'CONNECT_REJECTED') {
+        notifyError('Por favor conectá MetaMask para continuar');
+      }
+    }
   };
 
   return (
