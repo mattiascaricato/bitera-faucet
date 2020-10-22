@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
 import React, { createContext } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
+import useAccount from '../hooks/useAccount';
 import { ProviderContext } from './AccountContext';
 
 export const FaucetContext = createContext();
@@ -20,18 +21,19 @@ const parseDai = (amount) => ethers.utils.parseUnits(amount, 18);
 
 const FaucetContextProvider = ({ children }) => {
   const { provider } = useContext(ProviderContext);
+  const { disconnect } = useAccount();
   const [daiContract, setDaiContract] = useState(null);
 
   // MetaMask recommends reloading the page when the currently connected account or network changes
   useEffect(() => {
-    const { ethereum, location } = window;
+    const { ethereum } = window;
 
     ethereum.on('chainChanged', () => {
-      location.reload();
+      disconnect();
     });
 
     ethereum.on('accountsChanged', () => {
-      location.reload();
+      disconnect();
     });
 
     // Cleanup events listeners when component unmount
