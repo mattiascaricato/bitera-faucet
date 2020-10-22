@@ -43,7 +43,7 @@
   "dependencies": {
     "ethers": "^5.0.17",
     "path": "^0.12.7",
-    "preact": "^10.5.4",
+    "preact": "^10.5.5",
     "react-toastify": "^6.0.9",
     "use-persisted-state": "^0.3.0"
   }
