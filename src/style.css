@@ -161,3 +161,7 @@ html, body {
 .not-allowed {
   cursor: not-allowed;
 }
+
+.notification {
+  color: #363636;
+}
