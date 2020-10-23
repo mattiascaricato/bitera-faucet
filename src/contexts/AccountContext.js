@@ -1,14 +1,24 @@
 import React, { createContext } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { ethers } from 'ethers';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AccountContext = createContext();
 export const ProviderContext = createContext();
 
 const AccountContextProvider = ({ children }) => {
-  const [address, setAddress] = useState(null);
+  const [address, setAddress] = useLocalStorage('address', null);
   const [provider, setProvider] = useState(null);
   const { ethereum } = window;
+
+  useEffect(() => {
+    if (!address) {
+      setProvider(null);
+      return;
+    }
+
+    setProvider(new ethers.providers.Web3Provider(ethereum));
+  }, [address]);
 
   const validNetwork = () => {
     const { chainId } = ethereum;
@@ -23,7 +33,6 @@ const AccountContextProvider = ({ children }) => {
     try {
       const [walletAddress] = await ethereum.request({ method: 'eth_requestAccounts' });
       setAddress(walletAddress);
-      setProvider(new ethers.providers.Web3Provider(ethereum));
     } catch (error) {
       // The request was rejected by the user
       if (error.code === 4001) {

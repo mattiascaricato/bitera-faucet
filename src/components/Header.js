@@ -1,5 +1,4 @@
 import React from 'preact';
-
 import useAccount from '../hooks/useAccount';
 import useNotification from '../hooks/useNotification';
 

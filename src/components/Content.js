@@ -1,7 +1,6 @@
 import React from 'preact';
 import { ethers } from 'ethers';
 import { useState, useRef, useEffect } from 'preact/hooks';
-
 import useFaucet from '../hooks/useFaucet';
 import useNotification from '../hooks/useNotification';
 import Form from './Form';
