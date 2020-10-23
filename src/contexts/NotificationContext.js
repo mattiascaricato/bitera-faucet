@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 export const NotificationContext = createContext();
 
-const NotificationContextPorivder = ({ children }) => {
+const NotificationContextProvider = ({ children }) => {
   const [notification, setMessage] = useState(null);
 
   const notify = (message) => { setMessage({ message, type: 'info' }); toast(message); };
@@ -39,4 +39,4 @@ const NotificationContextPorivder = ({ children }) => {
   );
 };
 
-export default NotificationContextPorivder;
+export default NotificationContextProvider;

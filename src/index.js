@@ -1,6 +1,6 @@
 import React from 'preact';
 import 'react-toastify/dist/ReactToastify.css';
-import NotificationContextPorivder from './contexts/NotificationContext';
+import NotificationContextProvider from './contexts/NotificationContext';
 import AccountContextProvider from './contexts/AccountContext';
 import FaucetContextProvider from './contexts/FaucetContext';
 import Header from './components/Header';
@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import './style.css';
 
 const App = () => (
-  <NotificationContextPorivder>
+  <NotificationContextProvider>
     <AccountContextProvider>
       <div className="container">
         <Header />
@@ -19,7 +19,7 @@ const App = () => (
         <Footer />
       </div>
     </AccountContextProvider>
-  </NotificationContextPorivder>
+  </NotificationContextProvider>
 );
 
 export default App;
