@@ -41,7 +41,7 @@ const Content = () => {
       ));
 
       await tx.wait();
-      notify(() => <span className="notification">DAI enviados con éxito!</span>);
+      notify(() => <span className="notification">¡DAI enviados con éxito!</span>);
     } catch (error) {
       if (error.message === 'CONNECT_REJECTED') {
         notifyError('Por favor, conectá MetaMask');
