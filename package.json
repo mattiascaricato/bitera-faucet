@@ -37,11 +37,11 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "ethereum-waffle": "^3.1.0",
-    "preact-cli": "^3.0.3",
+    "preact-cli": "^3.5.1",
     "sirv-cli": "^1.0.7"
   },
   "dependencies": {
-    "ethers": "^5.0.17",
+    "ethers": "^5.8.0",
     "path": "^0.12.7",
     "preact": "^10.5.5",
     "react-toastify": "^6.0.9",
